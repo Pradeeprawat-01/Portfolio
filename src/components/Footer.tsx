@@ -1,91 +1,211 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { motion, easeInOut } from 'framer-motion';
+import { Github, Linkedin, Mail, Heart, ArrowUp } from 'lucide-react';
 
 const Footer: React.FC = () => {
-  const socialLinks = [
-    {
-      icon: <Github size={20} />,
-      href: 'https://github.com/Pradeeprawat-01',
-      label: 'GitHub',
-    },
-    {
-      icon: <Linkedin size={20} />,
-      href: 'https://linkedin.com/in/pradeep-singh-rawat-9707ard',
-      label: 'LinkedIn',
-    },
-    {
-      icon: <Mail size={20} />,
-      href: 'mailto:pradeepsraewat2001@gmail.com',
-      label: 'Email',
-    },
-  ];
+  const floatingVariants = {
+    animate: {
+      y: [-2, 2, -2],
+      transition: {
+        duration: 3,
+        repeat: Infinity,
+        ease: easeInOut
+      }
+    }
+  };
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <footer className="bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
-      <div className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="mb-6 md:mb-0"
-            >
-              <button
-                onClick={scrollToTop}
-                className="text-2xl font-bold text-gray-900 dark:text-white hover:text-cyan-500 transition-colors"
-              >
-                PSR
-              </button>
-              <p className="text-gray-600 dark:text-gray-300 mt-2">
-                DevOps Engineer & Software Developer
-              </p>
-            </motion.div>
+    <footer className="bg-gray-900 dark:bg-black relative overflow-hidden">
+      {/* Animated background elements */}
+      <motion.div
+        className="absolute top-10 left-1/6 w-2 h-2 bg-cyan-400/30 dark:bg-cyan-500/30 rounded-full"
+        animate={{
+          y: [0, -15, 0],
+          opacity: [0.3, 0.8, 0.3],
+        }}
+        transition={{
+          duration: 5,
+          repeat: Infinity,
+          ease: easeInOut
+        }}
+      />
+      <motion.div
+        className="absolute top-20 right-1/4 w-1.5 h-1.5 bg-blue-400/40 dark:bg-blue-500/40 rounded-full"
+        animate={{
+          y: [0, 12, 0],
+          opacity: [0.4, 0.9, 0.4],
+        }}
+        transition={{
+          duration: 7,
+          repeat: Infinity,
+          ease: easeInOut,
+          delay: 2
+        }}
+      />
+      <motion.div
+        className="absolute bottom-10 left-1/3 w-2 h-2 bg-purple-400/30 dark:bg-purple-500/30 rounded-full"
+        animate={{
+          y: [0, -10, 0],
+          x: [0, 6, 0],
+          opacity: [0.5, 1, 0.5],
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: easeInOut,
+          delay: 1
+        }}
+      />
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex space-x-4 mb-6 md:mb-0"
-            >
-              {socialLinks.map((link, index) => (
-                <motion.a
-                  key={index}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 bg-white dark:bg-gray-900 rounded-lg text-gray-600 dark:text-gray-300 hover:text-cyan-500 hover:bg-cyan-50 dark:hover:bg-cyan-900/20 transition-colors shadow-md"
-                  aria-label={link.label}
-                >
-                  {link.icon}
-                </motion.a>
-              ))}
-            </motion.div>
-          </div>
+      {/* Technical icons floating */}
+      <motion.div
+        className="absolute top-1/4 left-1/8 text-cyan-400/40 dark:text-cyan-500/40"
+        variants={floatingVariants}
+        animate="animate"
+      >
+        <Heart size={16} />
+      </motion.div>
+      <motion.div
+        className="absolute top-1/3 right-1/8 text-blue-400/40 dark:text-blue-500/40"
+        variants={floatingVariants}
+        animate="animate"
+        transition={{ delay: 1 }}
+      >
+        <Mail size={16} />
+      </motion.div>
 
-          <motion.div
+      {/* Gradient mesh background */}
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-900/5 to-transparent"
+        animate={{
+          opacity: [0.2, 0.5, 0.2],
+        }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          ease: easeInOut
+        }}
+      />
+
+      <div className="container mx-auto px-4 py-12 relative z-10">
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          <motion.div 
+            className="text-center md:text-left mb-6 md:mb-0"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="border-t border-gray-200 dark:border-gray-700 pt-8 mt-8"
+            transition={{ duration: 0.6 }}
           >
-            <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-600 dark:text-gray-300">
-              <p className="mb-2 md:mb-0">
-                © 2025 Pradeep Singh Rawat. All rights reserved.
-              </p>
-              <p className="flex items-center">
-                Built with <Heart className="mx-1 text-red-500" size={16} /> using React & TypeScript
-              </p>
-            </div>
+            <motion.h3 
+              className="text-xl font-bold text-white mb-2"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.2 }}
+            >
+              Pradeep Singh Rawat
+            </motion.h3>
+            <motion.p 
+              className="text-gray-400"
+              whileHover={{ color: "#06b6d4" }}
+              transition={{ duration: 0.2 }}
+            >
+              DevOps Engineer & Full-Stack Developer
+            </motion.p>
+          </motion.div>
+
+          <motion.div 
+            className="flex space-x-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <motion.a
+              href="https://github.com/Pradeeprawat-01"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-white transition-colors"
+              whileHover={{ 
+                scale: 1.2,
+                color: "#06b6d4",
+                y: -3
+              }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Github size={24} />
+            </motion.a>
+            <motion.a
+              href="https://linkedin.com/in/pradeep-singh-rawat-9707ard"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-white transition-colors"
+              whileHover={{ 
+                scale: 1.2,
+                color: "#06b6d4",
+                y: -3
+              }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Linkedin size={24} />
+            </motion.a>
+            <motion.a
+              href="mailto:pradeepsrawat1109@gmail.com"
+              className="text-gray-400 hover:text-white transition-colors"
+              whileHover={{ 
+                scale: 1.2,
+                color: "#06b6d4",
+                y: -3
+              }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Mail size={24} />
+            </motion.a>
           </motion.div>
         </div>
+
+        <motion.div 
+          className="border-t border-gray-800 mt-8 pt-8 text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <motion.p 
+            className="text-gray-400 text-sm"
+            whileHover={{ color: "#06b6d4" }}
+            transition={{ duration: 0.2 }}
+          >
+            © 2024 Pradeep Singh Rawat. Made with{' '}
+            <motion.span
+              className="inline-block text-red-500"
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ duration: 1, repeat: Infinity }}
+            >
+              <Heart size={16} />
+            </motion.span>{' '}
+            and lots of ☕
+          </motion.p>
+        </motion.div>
+
+        {/* Scroll to top button */}
+        <motion.button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 bg-gradient-to-r from-cyan-500 to-blue-500 text-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+          initial={{ opacity: 0, scale: 0 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          whileHover={{ 
+            scale: 1.1,
+            y: -3,
+            boxShadow: "0 10px 25px rgba(6, 182, 212, 0.3)"
+          }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ duration: 0.3 }}
+        >
+          <ArrowUp size={20} />
+        </motion.button>
       </div>
     </footer>
   );

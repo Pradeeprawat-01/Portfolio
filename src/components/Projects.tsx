@@ -77,9 +77,8 @@ const Projects: React.FC = () => {
                 }}
                 className="group relative bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <div className="absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-xl"
+                <div className={`absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-xl bg-gradient-to-r ${project.gradient}`}
                      style={{ background: `linear-gradient(135deg, var(--tw-gradient-stops))` }}
-                     className={`bg-gradient-to-r ${project.gradient}`}
                 ></div>
                 
                 <div className="relative z-10">

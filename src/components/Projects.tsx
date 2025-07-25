@@ -40,12 +40,28 @@ const Projects: React.FC = () => {
       gradient: 'from-purple-500 to-pink-500',
     },
     {
+      title: 'Gemini-linux-manager',
+      description: 'A beautiful, secure, and AI-powered web interface built with Streamlit for executing remote Linux commands over SSH. Features Gemini AI command generation, 50+ categorized commands, and an elegant UI.',
+      icon: <Rocket className="text-purple-500" size={32} />, // Using Rocket icon for this project
+      github: 'https://github.com/Pradeeprawat-01/Gemini-linux-manager.git',
+      technologies: ['Python', 'Streamlit', 'AI', 'SSH', 'Gemini'],
+      gradient: 'from-purple-500 to-cyan-500',
+    },
+    {
       title: 'Auto Call Bot',
       description: 'Flask app integrated with Twilio API to auto-call predefined numbers with custom voice messages.',
       icon: <Phone className="text-green-500" size={32} />,
       github: 'https://github.com/Pradeeprawat-01',
       technologies: ['Flask', 'Twilio API', 'Python', 'Voice Automation', 'REST API'],
       gradient: 'from-green-500 to-teal-500',
+    },
+    {
+      title: 'SMS Sender',
+      description: 'A Python-based tool for sending SMS messages programmatically. Supports multiple SMS gateways and provides a simple interface for automated messaging tasks.',
+      icon: <Phone className="text-blue-500" size={32} />, // Reusing Phone icon for SMS
+      github: 'https://github.com/Pradeeprawat-01/SMS_Sender.git',
+      technologies: ['Python', 'SMS Gateway', 'Automation', 'Messaging'],
+      gradient: 'from-blue-500 to-cyan-500',
     },
   ];
 

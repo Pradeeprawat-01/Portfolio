@@ -35,31 +35,13 @@ const Experience: React.FC = () => {
 
   const experiences = [
     {
-      title: 'DevOps Engineer',
-      company: 'Freelance',
-      period: '2023 - Present',
-      location: 'Remote',
-      description: 'Building and maintaining CI/CD pipelines, containerization with Docker, and cloud infrastructure management.',
-      technologies: ['Docker', 'Jenkins', 'AWS', 'GitHub Actions', 'Kubernetes'],
-      icon: <Cloud className="text-cyan-500" size={24} />,
-    },
-    {
-      title: 'Software Developer',
-      company: 'Personal Projects',
-      period: '2022 - Present',
-      location: 'Remote',
-      description: 'Developing full-stack applications, automation scripts, and contributing to open-source projects.',
-      technologies: ['Python', 'JavaScript', 'React', 'Node.js', 'Flask'],
-      icon: <Code className="text-blue-500" size={24} />,
-    },
-    {
-      title: 'System Administrator',
-      company: 'Freelance',
-      period: '2021 - 2023',
-      location: 'Remote',
-      description: 'Managing server infrastructure, implementing security measures, and optimizing system performance.',
-      technologies: ['Linux', 'Bash', 'Docker', 'Nginx', 'Security'],
-      icon: <Server className="text-green-500" size={24} />,
+      title: 'Intern',
+      company: 'LinuxWorld',
+      period: '2025',
+      location: 'Jaipur, India',
+      description: 'Completed an internship at LinuxWorld, gaining hands-on experience with Linux systems and related technologies.',
+      technologies: ['Linux', 'Shell Scripting', 'DevOps Basics'],
+      icon: <Briefcase className="text-cyan-500" size={24} />,
     },
   ];
 

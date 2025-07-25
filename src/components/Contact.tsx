@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, easeInOut } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, MessageSquare, User, Mail as MailIcon, Github, Linkedin } from 'lucide-react';
+import emailjs from 'emailjs-com';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +9,9 @@ const Contact: React.FC = () => {
     email: '',
     message: ''
   });
+  const [feedback, setFeedback] = useState<string | null>(null);
+  const [sending, setSending] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -41,8 +45,24 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
+    setSending(true);
+    setFeedback(null);
+    if (!formRef.current) return;
+    emailjs.sendForm(
+      'service_9r5igv1',
+      'template_9g911ep',
+      formRef.current,
+      'xHGKAYm3NOeg076Ev'
+    )
+    .then(() => {
+      setFeedback('Message sent successfully!');
+      setFormData({ name: '', email: '', message: '' });
+      setSending(false);
+    })
+    .catch(() => {
+      setFeedback('Failed to send message. Please try again later.');
+      setSending(false);
+    });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -68,7 +88,7 @@ const Contact: React.FC = () => {
     {
       icon: <MapPin className="text-green-500" size={24} />,
       title: 'Location',
-      value: 'India',
+      value: 'Pauri Garhwal, Uttarakhand',
       link: null
     },
     {
@@ -265,6 +285,7 @@ const Contact: React.FC = () => {
             {/* Contact Form */}
             <motion.div variants={itemVariants}>
               <motion.form 
+                ref={formRef}
                 onSubmit={handleSubmit}
                 className="bg-white dark:bg-gray-900 rounded-xl p-8 border border-gray-200 dark:border-gray-700 shadow-lg"
                 whileHover={{ 
@@ -280,6 +301,9 @@ const Contact: React.FC = () => {
                 >
                   Send Message
                 </motion.h3>
+                {feedback && (
+                  <div className={`mb-4 text-center font-medium ${feedback.includes('success') ? 'text-green-600' : 'text-red-600'}`}>{feedback}</div>
+                )}
 
                 <div className="space-y-6">
                   <motion.div
@@ -368,9 +392,10 @@ const Contact: React.FC = () => {
                       boxShadow: "0 10px 25px rgba(6, 182, 212, 0.3)"
                     }}
                     whileTap={{ scale: 0.98 }}
+                    disabled={sending}
                   >
                     <Send size={20} />
-                    <span>Send Message</span>
+                    <span>{sending ? 'Sending...' : 'Send Message'}</span>
                   </motion.button>
                 </div>
               </motion.form>

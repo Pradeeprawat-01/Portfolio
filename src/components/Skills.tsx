@@ -41,7 +41,6 @@ const Skills: React.FC = () => {
         { name: 'Docker', level: 90 },
         { name: 'Kubernetes', level: 85 },
         { name: 'Jenkins', level: 88 },
-        { name: 'GitHub Actions', level: 90 },
         { name: 'AWS', level: 82 },
       ],
     },
@@ -51,7 +50,7 @@ const Skills: React.FC = () => {
       skills: [
         { name: 'AWS (EC2/S3)', level: 85 },
         { name: 'Terraform', level: 78 },
-        { name: 'Linux Administration', level: 95 },
+        { name: 'Linux', level: 95 },
         { name: 'Nginx', level: 80 },
         { name: 'CI/CD', level: 90 },
       ],
@@ -73,7 +72,6 @@ const Skills: React.FC = () => {
       skills: [
         { name: 'GenAI', level: 80 },
         { name: 'ShellGPT', level: 85 },
-        { name: 'TGPT', level: 75 },
         { name: 'Automation Scripts', level: 90 },
         { name: 'Monitoring', level: 75 },
       ],
@@ -84,9 +82,7 @@ const Skills: React.FC = () => {
       skills: [
         { name: 'MongoDB', level: 80 },
         { name: 'MySQL', level: 75 },
-        { name: 'Redis', level: 70 },
-        { name: 'Data Modeling', level: 75 },
-        { name: 'PostgreSQL', level: 70 },
+
       ],
     },
   ];
@@ -286,7 +282,7 @@ const Skills: React.FC = () => {
               Additional Skills
             </motion.h3>
             <div className="flex flex-wrap justify-center gap-4">
-              {['Git', 'Docker Compose', 'Terraform', 'Ansible', 'Prometheus', 'Grafana', 'ELK Stack', 'Microservices', 'REST APIs', 'GraphQL'].map((skill, index) => (
+              {['Git', 'Docker Compose', 'Terraform', 'Ansible', 'Prometheus', 'Grafana', 'Microservices', 'HTML5', 'CSS3'].map((skill, index) => (
                 <motion.span
                   key={index}
                   initial={{ opacity: 0, scale: 0.8 }}
